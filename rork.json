@@ -1,0 +1,25 @@
+{
+  "$schema": "https://rork.com/schema/rork.json",
+  "apps": [
+    {
+      "name": "Kyrie AI",
+      "path": "ios-kyrie-ai",
+      "framework": "swift"
+    },
+    {
+      "name": "Kyrie AI Web",
+      "path": "web-kyrie-ai-web",
+      "framework": "web"
+    },
+    {
+      "name": "Backend",
+      "path": "backend",
+      "framework": "supabase"
+    },
+    {
+      "name": "Kyrie AI",
+      "path": "android",
+      "framework": "kotlin"
+    }
+  ]
+}

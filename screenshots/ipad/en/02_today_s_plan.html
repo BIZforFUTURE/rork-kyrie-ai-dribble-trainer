@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { margin: 0; padding: 0; background: #090D1A; }
+</style>
+</head>
+<body>
+<div style="position:relative; width:2048px; height:2732px; overflow:hidden;">
+
+  <!-- Background -->
+  <img src="https://r2-pub.rork.com/app-store-screenshots/d211f3d2-d70e-4947-a95b-0674b3bfd123.png"
+       style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; object-position:center; z-index:0; display:block;"
+       draggable="false" />
+
+  <!-- Dark top scrim for headline contrast -->
+  <div style="position:absolute; top:0; left:0; width:100%; height:26%; background: linear-gradient(to bottom, rgba(6,9,20,0.82) 0%, rgba(6,9,20,0.55) 70%, rgba(6,9,20,0) 100%); z-index:1; pointer-events:none;"></div>
+
+  <!-- Headline -->
+  <div style="position:absolute; top:0; left:50%; width:76%; height:22%; transform:translateX(-50%); display:flex; align-items:center; justify-content:center; text-align:center; z-index:2;">
+    <h1 style="font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 140px; line-height: 1.0; color: #FFFFFF; text-shadow: 0 0 60px rgba(255,98,0,0.55), 0 4px 32px rgba(0,0,0,0.9), 0 2px 8px rgba(0,0,0,1); letter-spacing: 0.01em; text-transform: uppercase;">
+      Your Daily<br>AI Plan
+    </h1>
+  </div>
+
+  <!-- Device Mockup -->
+  <div style="position:absolute; left:50%; bottom:0; width:85%; transform:translateX(-50%) translateY(6%); z-index:3;">
+    <div style="position:relative; aspect-ratio:2245/2930;">
+      <div style="position:absolute; overflow:hidden; left:4.28%; top:3.48%; width:91.22%; height:93.24%; border-radius:1.4% / 1.0%;">
+        <img src="https://r2-pub.rork.com/app-store-screenshots/aad619e9-0fc1-4593-9033-7d2c70d12cbe.png" style="display:block; width:100%; height:100%; object-fit:cover; object-position:top;" draggable="false" />
+      </div>
+      <img src="https://r2-pub.rork.com/static/ipad-mockups/ipad-pro-13-space-gray-portrait.png" style="position:relative; z-index:10; display:block; width:100%; height:100%; pointer-events:none;" draggable="false" />
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

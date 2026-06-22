@@ -1,0 +1,52 @@
+{
+  "theme": {
+    "style": "Deep court-night atmosphere built on near-black navy foundations with electric orange energy as the defining accent. Arena-style dramatic rim lighting creates high-contrast shadows and charged intensity across every frame. Metallic shimmer, glowing particles, and bold geometric light arcs give each slide an athletic premium feel — cinematic and urgent, like the seconds before tip-off.",
+    "headlineFont": "font-family: 'Barlow Condensed', sans-serif; font-weight: 800; @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&display=swap')",
+    "headlineFontSize": 140,
+    "mockupIds": {
+      "iphone": "cosmic-orange",
+      "ipad": "space-gray"
+    },
+    "palette": {
+      "primary": "#090D1A",
+      "secondary": "#162040",
+      "accent": "#FF6200"
+    }
+  },
+  "slides": [
+    {
+      "label": "Home Score",
+      "backgroundPrompt": "Abstract 3D rendered scene with massive sweeping arcs of electric orange and molten amber light cutting upward from the lower-left across a deep near-black navy expanse, dramatic underlit rim lighting casting long angular shadows upward, floating translucent spheres catching concentrated orange light with inner core glow and soft halo bleed. Depth of field blur on far edges, fine luminous dust particles suspended in mid-air. Upper 30% fades to a calm near-black for text overlay. 8K quality, ultra smooth gradients, premium feel, no text, no letters, no UI elements, no device mockups",
+      "backgroundUrl": "https://r2-pub.rork.com/app-store-screenshots/def9b118-daad-4794-81c0-03c8bfeba0e4.png"
+    },
+    {
+      "label": "Today's Plan",
+      "backgroundPrompt": "Abstract digital art with cool steel-blue and icy cobalt light beams radiating outward from a concentrated point near the right-center edge, slicing through deep near-black charcoal layers, soft volumetric atmospheric fog diffusing the beams into horizontal bands of cobalt and dark navy. Lower region alive with thin glowing ice-blue filaments and faint electric orange rim traces creating tension. Upper 30% completely calm and near-black. 8K quality, ultra smooth gradients, premium feel, no text, no letters, no UI elements, no device mockups",
+      "backgroundUrl": "https://r2-pub.rork.com/app-store-screenshots/d211f3d2-d70e-4947-a95b-0674b3bfd123.png"
+    },
+    {
+      "label": "Training Modes",
+      "backgroundPrompt": "3D rendered abstract burst of sharp geometric shards — elongated triangles and rhomboids — in deep navy blue and electric orange, radiating outward from a blazing molten core positioned at the lower center, each shard edge catching intense neon orange rim light against a near-black void. Micro debris of gold-copper sparks trails each fragment, with subtle depth-of-field softening the outermost pieces. Upper 30% dark and uncluttered. 8K quality, ultra smooth gradients, premium feel, no text, no letters, no UI elements, no device mockups",
+      "backgroundUrl": "https://r2-pub.rork.com/app-store-screenshots/8d488449-a497-4ef6-a6a9-f5c61b960d80.png"
+    },
+    {
+      "label": "Streak XP",
+      "backgroundPrompt": "Abstract digital art with a single intense warm amber and burnt orange spotlight surging upward from below-center, creating a rich golden haze that gradually dissolves into deep navy-black at the very top, scattered micro-particles and copper embers drifting upward catching the warm light. Subtle dark steel-blue tones frame the edges creating cinematic vignette depth. Upper region dark and calm. 8K quality, ultra smooth gradients, premium feel, no text, no letters, no UI elements, no device mockups",
+      "backgroundUrl": "https://r2-pub.rork.com/app-store-screenshots/a77d9e12-c06d-473b-a78b-66bbb25bb1cb.png"
+    },
+    {
+      "label": "Plan Focus",
+      "backgroundPrompt": "Abstract 3D rendered scene with razor-thin precision beams of electric orange and pale gold light cutting at a low oblique angle across a near-black flat surface, creating long glowing linear streaks and extreme shadow contrast, surrounded by a vast deep navy darkness with subtle dark steel-blue atmospheric mist pooling in corners. The composition feels surgical and focused. Upper third completely dark for text legibility. 8K quality, ultra smooth gradients, premium feel, no text, no letters, no UI elements, no device mockups",
+      "backgroundUrl": "https://r2-pub.rork.com/app-store-screenshots/1eeb5e48-78c2-4344-95e3-af7526a51f88.png"
+    }
+  ],
+  "headlines": {
+    "en": {
+      "Home Score": "Ball Handler<br>Score",
+      "Today's Plan": "Your Daily<br>AI Plan",
+      "Training Modes": "Every Drill<br>You Need",
+      "Streak XP": "Earn XP<br>Build Streaks",
+      "Plan Focus": "Train Your<br>Weak Spots"
+    }
+  }
+}
