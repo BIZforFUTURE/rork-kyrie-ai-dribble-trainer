@@ -1,5 +1,6 @@
 package com.rork.kyrieai.data
 
+import android.app.Activity
 import android.app.Application
 import android.content.Context
 import androidx.lifecycle.AndroidViewModel
@@ -22,6 +23,30 @@ class KyrieViewModel(app: Application) : AndroidViewModel(app) {
 
     private val _isPremium = MutableStateFlow(prefs.getBoolean("premium", false))
     val isPremium: StateFlow<Boolean> = _isPremium.asStateFlow()
+
+    /** Google Play Billing. Entitlement is driven by real Play purchases. */
+    val billing = BillingManager(app) { active -> setPremium(active) }
+    val billingStatus: StateFlow<String?> = billing.status
+
+    init {
+        billing.start()
+    }
+
+    /** Launches the Play purchase flow for the given subscription product. */
+    fun purchase(activity: Activity, productId: String) {
+        billing.purchase(activity, productId)
+    }
+
+    /** Re-checks Play entitlements (used for "Restore purchases"). */
+    fun restorePurchases() {
+        billing.queryPurchases()
+    }
+
+    fun clearBillingStatus() {
+        billing.clearStatus()
+    }
+
+    fun priceFor(productId: String): String? = billing.formattedPrice(productId)
 
     private fun loadProfile(): PlayerProfile? {
         val raw = prefs.getString("profile", null) ?: return null

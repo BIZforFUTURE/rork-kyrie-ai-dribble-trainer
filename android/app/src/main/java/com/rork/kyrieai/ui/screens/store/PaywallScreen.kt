@@ -40,6 +40,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.rork.kyrieai.data.BillingManager
 import com.rork.kyrieai.ui.components.ArenaBackground
 import com.rork.kyrieai.ui.components.GlassCard
 import com.rork.kyrieai.ui.components.PrimaryButton
@@ -48,18 +49,20 @@ import com.rork.kyrieai.ui.screens.onboarding.systemPadding
 import com.rork.kyrieai.ui.theme.KT
 import com.rork.kyrieai.util.Haptics
 
-private data class Plan(val title: String, val price: String, val sub: String, val annual: Boolean)
+private data class Plan(val title: String, val productId: String, val price: String, val sub: String, val annual: Boolean)
 
 @Composable
 fun PaywallScreen(
     context: String,
     isPremium: Boolean,
-    onPurchase: () -> Unit,
+    onPurchase: (productId: String) -> Unit,
+    onRestore: () -> Unit,
+    priceFor: (productId: String) -> String?,
     onClose: () -> Unit,
 ) {
     val plans = listOf(
-        Plan("Yearly", "$3.33", "3-day free trial, then $3.33/mo ($39.99/yr)", true),
-        Plan("Monthly", "$9.99", "3-day free trial, then $9.99/mo", false),
+        Plan("Yearly", BillingManager.YEARLY_ID, "$3.33", "3-day free trial, then $3.33/mo ($39.99/yr)", true),
+        Plan("Monthly", BillingManager.MONTHLY_ID, "$9.99", "3-day free trial, then $9.99/mo", false),
     )
     var selected by remember { mutableStateOf(0) }
 
@@ -100,11 +103,11 @@ fun PaywallScreen(
             // plans
             Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(12.dp)) {
                 plans.forEachIndexed { index, plan ->
-                    PlanRow(plan, selected == index) { Haptics.select(); selected = index }
+                    PlanRow(plan, priceFor(plan.productId), selected == index) { Haptics.select(); selected = index }
                 }
             }
 
-            PrimaryButton("Start 3-Day Free Trial", icon = Icons.Filled.Bolt, onClick = onPurchase)
+            PrimaryButton("Start 3-Day Free Trial", icon = Icons.Filled.Bolt, onClick = { onPurchase(plans[selected].productId) })
             Text(
                 "3 days free, then ${if (plans[selected].annual) "billed annually" else "billed monthly"}. Cancel anytime.",
                 color = KT.textTertiary, fontSize = 11.sp, textAlign = TextAlign.Center,
@@ -112,6 +115,12 @@ fun PaywallScreen(
             Text(
                 "Payment is charged to your Google Play account. Subscriptions auto-renew unless cancelled at least 24 hours before the end of the period.",
                 color = KT.textTertiary, fontSize = 11.sp, textAlign = TextAlign.Center, modifier = Modifier.padding(horizontal = 8.dp),
+            )
+            Text(
+                "Restore purchases",
+                color = KT.textSecondary, fontSize = 13.sp, fontWeight = FontWeight.SemiBold,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.clickable { Haptics.light(); onRestore() }.padding(8.dp),
             )
         }
         // close button
@@ -134,7 +143,7 @@ private fun PerkRow(icon: ImageVector, text: String) {
 }
 
 @Composable
-private fun PlanRow(plan: Plan, selected: Boolean, onClick: () -> Unit) {
+private fun PlanRow(plan: Plan, livePrice: String?, selected: Boolean, onClick: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth().clip(KT.shapeM).background(KT.surface)
@@ -154,8 +163,8 @@ private fun PlanRow(plan: Plan, selected: Boolean, onClick: () -> Unit) {
             Text(plan.sub, color = KT.energy, fontSize = 11.sp)
         }
         Column(horizontalAlignment = Alignment.End) {
-            Text(plan.price, color = KT.textPrimary, fontWeight = FontWeight.Black, fontSize = 18.sp)
-            Text("/mo", color = if (plan.annual) KT.energy else KT.textSecondary, fontWeight = FontWeight.Bold, fontSize = 10.sp)
+            Text(livePrice ?: plan.price, color = KT.textPrimary, fontWeight = FontWeight.Black, fontSize = 18.sp)
+            Text(if (plan.annual) "/yr" else "/mo", color = if (plan.annual) KT.energy else KT.textSecondary, fontWeight = FontWeight.Bold, fontSize = 10.sp)
         }
     }
 }
